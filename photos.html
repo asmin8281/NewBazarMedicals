@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/favicon.jpg" href="favicon.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Photos of New Bazar Medicals: Explore our store, products, and facilities through our gallery.">
+    <title>Photos - New Bazar Medicals</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-hover);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 46, 37, 0.8));
+            padding: var(--spacing-md);
+            color: var(--white);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo.jpg" alt="New Bazar Medicals Logo" class="logo-icon"
+                    style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                <span>New Bazar Medicals</span>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <svg class="menu-toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+            </button>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="store-info.html">Store Info</a>
+                <a href="photos.html" class="active">Photos</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Photos Section -->
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">Our Gallery</h1>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--spacing-xl);">
+                Explore New Bazar Medicals through our photo gallery. We take pride in our clean, well-organized store
+                and our commitment to professional healthcare.
+            </p>
+
+            <div class="gallery-grid">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item">
+                    <img src="map-location.png" alt="Store Location Map">
+                    <div class="gallery-item-overlay">
+                        <h3>Our Location</h3>
+                        <p>Easily find us in Areekode.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item">
+                    <img src="services-info.jpg" alt="Our Services and Products">
+                    <div class="gallery-item-overlay">
+                        <h3>Our Services</h3>
+                        <p>Quality medicines and healthcare products.</p>
+                    </div>
+                </div>
+
+                <!-- Placeholder Items (User can add more) -->
+                <div class="gallery-item"
+                    style="background-color: var(--light-gray); display: flex; align-items: center; justify-content: center;">
+                    <p style="color: var(--gray);">More photos coming soon...</p>
+                </div>
+                <div class="gallery-item"
+                    style="background-color: var(--light-gray); display: flex; align-items: center; justify-content: center;">
+                    <p style="color: var(--gray);">More photos coming soon...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>New Bazar Medicals</h4>
+                <p>Your trusted partner in health and wellness. We are committed to providing quality healthcare
+                    products and services to our community.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="photos.html">Photos</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p>New Bazar Medicals,Areekode</p>
+                <p>Phone: +91 7510480483</p>
+            </div>
+            <div class="footer-section">
+                <h4>Hours</h4>
+                <p>Monday - Sunday</p>
+                <p>09:30 am - 12:00 am</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 New Bazar Medicals. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="icons.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
