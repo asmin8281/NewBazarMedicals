@@ -103,16 +103,17 @@ function initStarRating() {
 }
 
 /**
- * Review Form Handler
+ * Review Form Handler + WhatsApp Send
  */
 function initReviewForm() {
     const reviewForm = document.getElementById('reviewForm');
-    
+
     if (reviewForm) {
         reviewForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const starRatingInput = reviewForm.querySelector('.star-rating-input');
+
             const formData = {
                 name: document.getElementById('reviewerName').value,
                 email: document.getElementById('reviewerEmail').value,
@@ -120,46 +121,51 @@ function initReviewForm() {
                 review: document.getElementById('reviewText').value,
                 date: new Date().toLocaleDateString()
             };
-            
-            // Validate form
+
+            // ✅ Validate form
             if (!formData.name || !formData.email || !formData.rating || !formData.review) {
                 alert('Please fill in all fields and provide a rating.');
                 return;
             }
-            
-            // In a real application, this would send data to a server
-            // For now, we'll store it in localStorage
+
+            // ✅ Store review (Admin approval)
             let reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
             reviews.push({
                 ...formData,
                 id: Date.now(),
-                approved: false // Admin approval required
+                approved: false
             });
             localStorage.setItem('reviews', JSON.stringify(reviews));
-            
-            // Show success message
-            alert('Thank you for your review! It will be published after admin approval.');
-            
-            // Reset form
+
+            // ✅ WhatsApp Integration
+            const phoneNumber = "919895955934"; // Your WhatsApp number
+            const message = 
+`🛍️ New Customer Review
+
+👤 Name: ${formData.name}
+📧 Email: ${formData.email}
+⭐ Rating: ${formData.rating}/5
+📝 Review: ${formData.review}
+📅 Date: ${formData.date}`;
+
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, "_blank");
+
+            // ✅ Success message
+            alert('Thank you for your review! It has been sent to WhatsApp and will be published after admin approval.');
+
+            // ✅ Reset form
             reviewForm.reset();
+
             const starContainer = reviewForm.querySelector('.star-rating');
             if (starContainer) {
                 const stars = starContainer.querySelectorAll('.star');
                 const hiddenInput = starContainer.querySelector('.star-rating-input');
+
                 stars.forEach(star => {
                     star.classList.remove('active');
-                    const svg = star.querySelector('svg');
-                    if (svg) svg.style.fill = '';
-                });
-                if (hiddenInput) hiddenInput.value = 0;
-            }
-            
-            // Reload reviews if on reviews page
-            if (window.location.pathname.includes('reviews.html')) {
-                displayReviews();
-            }
-        });
-    }
+                    const svg = star.querySelector('svg')
+
     
     // Display existing reviews
     displayReviews();
